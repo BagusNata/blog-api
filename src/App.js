@@ -1,28 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './pages/home';
+import About from './pages/about';
 
-export class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-       isloading: false
-    }
-  }
-
-  async componentDidMount(){
-    const url = "https://jsonplaceholder.typicode.com/posts";
-    const response = await fetch(url);
-    const data = await response.json();
-
-    console.log("data", data)
-  }
-  
-  render() {
-    return (
-      <div>
-        <h1>sadksan</h1>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+      </Switch>
+    </Router>
+  )
 }
 
 export default App
