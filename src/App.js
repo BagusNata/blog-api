@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/home';
 import About from './pages/about';
+import PostDetail from "./pages/postDetail";
 import Navbar from './components/Navbar';
 
 
@@ -19,9 +20,10 @@ function App() {
           <Navbar />
         </div>
         <div>
-          <Switch >
+          <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/post/:id" component={PostDetail} />
           </Switch>
         </div>
       </div>

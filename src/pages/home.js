@@ -1,47 +1,56 @@
-import React, { Component } from "react";
-
-
+import React, { Component } from 'react'
 
 export class home extends Component {
-         constructor() {
-           super();
-           this.state = {
-             isLoading: true,
-             person: null
-           };
-         }
+  constructor() {
+    super()
+    this.state = {
+       post: []
+    }
+  }
+  
+  async componentDidMount() {
+    const url = "https://jsonplaceholder.typicode.com/posts";
+    const response = await fetch(url);
+    const data = await response.json();
 
-        async componentDidMount(){
-          const url = "https://api.randomuser.me/";
-          const response = await fetch(url);
-          const data = await response.json();
-          this.setState({person: data.results[0], isLoading:false})
+    this.setState({post: data})
 
-          console.log("data :", this.state.person)
+    console.log("post :", this.state.post)
+  };
 
-        }
+  handleClick = (userId) => {
+    console.log("clicked",userId)
+  }
 
+  
+  
+  
+  render() {
+    const postCardJSX = [];
 
-         render() {
-           if (this.state.isLoading) {
-             return <div className="header">loading...</div>;
-           };
+    this.state.post.forEach((post,index) => {
+      postCardJSX.push(
+        <div className="card mt-4" key={post.id}>
+          <div className="card-body">
+            <h5 className="card-title">{post.title} </h5>
+            <h6 className="card-subtitle mb-2 text-muted">{post.title} </h6>
+            <p className="card-text">{post.body}</p>
+            <button onClick={() => this.handleClick(post.id)} type="button" className="btn btn-primary">
+              Read more
+            </button>
+          </div>
+        </div>
+      );
+    })
+    
+    return (
+      <div>
+        <h1 className="header">home</h1>
+        {postCardJSX}
+        
+      </div>
+    );
+  }
+}
 
-           if (!this.state.isLoading) {
-             return <div className="header">didn't get person</div>;
-           };
-
-           return (
-             <div>
-               <div>
-                 <div>{this.state.person.name.title}</div>
-                 <div>{this.state.person.name.first}</div>
-                 <div>{this.state.person.name.last}</div>
-                 <img src={this.state.person.picture.large} />
-               </div>
-             </div>
-           );
-         }
-       }
-
-export default home;
+export default home
