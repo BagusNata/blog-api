@@ -18,21 +18,7 @@ export class postDetail extends Component {
     console.log("comment :", this.state.comment);
   }
 
-  // post = () => {
-  //   <div className="card">
-  //     <div className="card-body">
-  //       <h5 className="card-title">
-  //         Sunt aut facere repellat provident occaecati excepturi optio
-  //         reprehenderit
-  //       </h5>
-  //       <p className="card-text">
-  //         Quia et suscipit\nsuscipit recusandae consequuntur expedita et
-  //         cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem
-  //         sunt rem eveniet architecto
-  //       </p>
-  //     </div>
-  //   </div>;
-  // }
+
 
   render() {
     const commentCardJSX = [];
