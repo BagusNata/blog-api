@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export class home extends Component {
   constructor() {
@@ -19,6 +20,7 @@ export class home extends Component {
   };
 
   handleClick = (userId) => {
+    
     console.log("clicked",userId)
   }
 
@@ -32,10 +34,16 @@ export class home extends Component {
       postCardJSX.push(
         <div className="card mt-4" key={post.id}>
           <div className="card-body">
-            <h5 className="card-title">{post.title} </h5>
+            <Link to="/post/:id">
+              <h5 className="card-title clr-title">{post.title} </h5>
+            </Link>
             <h6 className="card-subtitle mb-2 text-muted">{post.title} </h6>
             <p className="card-text">{post.body}</p>
-            <button onClick={() => this.handleClick(post.id)} type="button" className="btn btn-primary">
+            <button
+              onClick={() => this.handleClick(post.id)}
+              type="button"
+              className="btn btn-primary"
+            >
               Read more
             </button>
           </div>
@@ -45,7 +53,7 @@ export class home extends Component {
     
     return (
       <div>
-        <h1 className="header">home</h1>
+        <h1 className="header">My Jsonplaceholder Blog</h1>
         {postCardJSX}
         
       </div>
