@@ -20,8 +20,9 @@ export class home extends Component {
   };
 
   handleClick = (userId) => {
-    
+    console.log('history: ', this.props.history);
     console.log("clicked",userId)
+    this.props.history.push(`posts/${userId}`);
   }
 
   
